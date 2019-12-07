@@ -15,6 +15,28 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  n_of_itens = 0
+i_cart = 0
+while i_cart < cart.length do
+  i_coupons = 0
+  if cart[i_cart][:item] == coupons[i_coupons][:item] && cart[i_cart][:count] >= coupons[i_coupons][:num]
+    itemWDisc = Hash.new
+    itemWDisc = cart[i_cart]
+
+    itemWDisc[:item] += " W/COUPON"
+    #itemWDisc[:count] = coupons[i_coupons][:num]
+    #itemWDisc[:price] = coupons[i_coupons][:cost] / coupons[i_coupons][:num]
+
+    cart.push(itemWDisc)
+
+    cart[i_cart][:count] -=  coupons[i_coupons][:num]
+
+    p "it prints"
+    p cart
+  end
+  i_cart += 1
+  i_coupons += 1
+end
 end
 
 def apply_clearance(cart)
